@@ -93,13 +93,16 @@
         }
         else if ((service & DZNPhotoPickerControllerServiceBingImages) > 0)
         {
-            _Id = [object objectForKey:@"ID"];
-            _detailURL = [NSURL URLWithString:[object valueForKeyPath:@"SourceUrl"]];
-            _thumbURL = [NSURL URLWithString:[object valueForKeyPath:@"Thumbnail.MediaUrl"]];
-            _sourceURL = [NSURL URLWithString:[object valueForKeyPath:@"MediaUrl"]];
-            _width = @([[object objectForKey:@"Width"] integerValue]);
-            _height = @([[object objectForKey:@"Height"] integerValue]);
-            _contentType = [object objectForKey:@"ContentType"];
+            _Id = [object objectForKey:@"imageId"];
+            _detailURL = [NSURL URLWithString:[object valueForKeyPath:@"contentUrl"]];
+            _thumbURL = [NSURL URLWithString:[object valueForKeyPath:@"thumbnailUrl"]];
+            _sourceURL = [NSURL URLWithString:[object valueForKeyPath:@"contentUrl"]];
+            _width = @([[object objectForKey:@"width"] integerValue]);
+            _height = @([[object objectForKey:@"height"] integerValue]);
+          NSString *format = [object objectForKey:@"encodingFormat"];
+          if (format != nil) {
+            _contentType = [NSString stringWithFormat:@"image/%@", format];
+          }
         }
         else if ((service & DZNPhotoPickerControllerServiceGiphy) > 0)
         {

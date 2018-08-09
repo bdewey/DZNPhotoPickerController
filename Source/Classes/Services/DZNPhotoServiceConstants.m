@@ -32,7 +32,7 @@ NSURL *baseURLForService(DZNPhotoPickerControllerServices service)
         case DZNPhotoPickerControllerServiceFlickr:             return [NSURL URLWithString:@"https://api.flickr.com/services/rest/"];
         case DZNPhotoPickerControllerServiceInstagram:          return [NSURL URLWithString:@"https://api.instagram.com/v1/"];
         case DZNPhotoPickerControllerServiceGoogleImages:       return [NSURL URLWithString:@"https://www.googleapis.com/customsearch/v1/"];
-        case DZNPhotoPickerControllerServiceBingImages:         return [NSURL URLWithString:@"https://api.datamarket.azure.com/"];
+        case DZNPhotoPickerControllerServiceBingImages:         return [NSURL URLWithString:@"https://api.cognitive.microsoft.com/bing/v7.0/images/search"];
         case DZNPhotoPickerControllerServiceGiphy:              return [NSURL URLWithString:@"https://api.giphy.com/"];
         default:                                                return nil;
     }
@@ -64,7 +64,7 @@ NSString *photosResourceKeyPathForService(DZNPhotoPickerControllerServices servi
         case DZNPhotoPickerControllerServiceFlickr:             return @"photos.photo";
         case DZNPhotoPickerControllerServiceInstagram:          return @"data";
         case DZNPhotoPickerControllerServiceGoogleImages:       return @"items";
-        case DZNPhotoPickerControllerServiceBingImages:         return @"d.results";
+        case DZNPhotoPickerControllerServiceBingImages:         return @"value";
         case DZNPhotoPickerControllerServiceGiphy:              return @"data";
         default:                                                return nil;
     }
@@ -77,7 +77,7 @@ NSString *photoSearchUrlPathForService(DZNPhotoPickerControllerServices service)
         case DZNPhotoPickerControllerServiceFlickr:             return @"flickr.photos.search";
         case DZNPhotoPickerControllerServiceInstagram:          return @"tags/%@/media/recent";
         case DZNPhotoPickerControllerServiceGoogleImages:       return @"";
-        case DZNPhotoPickerControllerServiceBingImages:         return @"Bing/Search/Image?$format=json";
+        case DZNPhotoPickerControllerServiceBingImages:         return @"";
         case DZNPhotoPickerControllerServiceGiphy:              return @"v1/gifs/search";
         default:                                                return nil;
     }
@@ -111,7 +111,7 @@ NSString *keyForSearchTerm(DZNPhotoPickerControllerServices service)
         case DZNPhotoPickerControllerServiceFlickr:             return @"text";
         case DZNPhotoPickerControllerServiceInstagram:          return @"q";
         case DZNPhotoPickerControllerServiceGoogleImages:       return @"q";
-        case DZNPhotoPickerControllerServiceBingImages:         return @"Query";
+        case DZNPhotoPickerControllerServiceBingImages:         return @"q";
         case DZNPhotoPickerControllerServiceGiphy:              return @"q";
         default:                                                return nil;
     }

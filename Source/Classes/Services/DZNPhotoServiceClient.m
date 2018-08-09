@@ -55,7 +55,7 @@
     if (self.service == DZNPhotoPickerControllerServiceBingImages) {
         
         // Bing requires basic auth with password and user name as the consumer key.
-        [self.requestSerializer setAuthorizationHeaderFieldWithUsername:consumerKey password:consumerKey];
+      [self.requestSerializer setValue:consumerKey forHTTPHeaderField:@"Ocp-Apim-Subscription-Key"];
     }
 }
 
@@ -116,12 +116,9 @@
     }
     
     //Bing requires parameters to be wrapped in '' values.
-    if (self.service == DZNPhotoPickerControllerServiceBingImages) {
-        [params setObject:[NSString stringWithFormat:@"'%@'", keyword] forKey:keyForSearchTerm(self.service)];
-    } else {
-        [params setObject:keyword forKey:keyForSearchTerm(self.service)];
-    }
-    
+  NSString *keyForSearch = keyForSearchTerm(self.service);
+    [params setObject:keyword forKey:keyForSearch];
+  
     if (keyForSearchResultPerPage(self.service)) {
         [params setObject:@(resultPerPage) forKey:keyForSearchResultPerPage(self.service)];
     }
@@ -157,14 +154,10 @@
     }
     else if (self.service == DZNPhotoPickerControllerServiceBingImages)
     {
-        [params setObject:@"'Moderate'" forKey:@"Adult"];
-        
-        // Default to size medium. Size Large causes some buggy behavior with download times.
-        [params setObject:@"'Size:Medium'" forKey:@"ImageFilters"];
-        
-        // Top and skip are like limit and offset
-        [params setObject:@(resultPerPage) forKey:@"$top"];
-        [params setObject:@(page * resultPerPage) forKey:@"$skip"];
+      params[@"mkt"] = @"es-MX";
+      params[@"safeSearch"] = @"Moderate";
+      params[@"count"] = @(resultPerPage);
+      params[@"offset"] = @(page * resultPerPage);
     }
     else if (self.service == DZNPhotoPickerControllerServiceGiphy)
     {
