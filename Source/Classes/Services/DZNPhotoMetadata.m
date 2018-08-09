@@ -177,6 +177,7 @@
     if (self.authorUsername) [attributes setObject:self.authorUsername forKey:@"author_username"];
     if (self.authorProfileURL) [attributes setObject:self.authorProfileURL forKey:@"author_profile_url"];
     if (self.contentType) [attributes setObject:self.contentType forKey:@"content_type"];
+  if (self.thumbURL) [attributes setObject:self.thumbURL forKey:@"thumb_url"];
     
     return attributes;
 }
