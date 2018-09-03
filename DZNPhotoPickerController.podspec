@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
   s.screenshots 	  = "https://raw.githubusercontent.com/dzenbot/DZNPhotoPickerController/master/Docs/screenshots.png"
   s.license     	  = { :type => 'MIT', :file => 'LICENSE' }
   s.author       	  = { "Ignacio Romero Z." => "iromero@dzen.cl" }
-  
+
   s.source       	  = { :git => "https://github.com/dzenbot/UIPhotoPickerController.git", :tag => "v#{s.version}" }
 
   s.default_subspec = 'Core'
@@ -23,7 +23,7 @@ Pod::Spec.new do |s|
     ss.source_files = 'Source/Classes/Core/*.{h,m}'
     ss.dependency   'DZNPhotoPickerController/Services'
     ss.dependency   'DZNPhotoPickerController/Editor'
-    ss.dependency   'SDWebImage', '~> 3.7'
+    ss.dependency   'SDWebImage', '~> 4.0'
     ss.dependency   'DZNEmptyDataSet', '~> 1.7'
   end
 
@@ -40,5 +40,5 @@ Pod::Spec.new do |s|
     ss.source_files = 'Source/Classes/Editor/*.{h,m}',
                       'Source/Classes/Core/DZNPhotoPickerControllerConstants.{h,m}'
   end
-  
+
 end
